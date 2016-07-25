@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<RepositoryCustomSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AutoRefresh>true</AutoRefresh>
+  <AutoRefreshRemotes>true</AutoRefreshRemotes>
+  <DraftCommitMsg />
+  <IncomingSavedCount>0</IncomingSavedCount>
+  <LastCheckedRemotes>2016-06-22T20:50:57.2757396+09:00</LastCheckedRemotes>
+  <LastUsedView>Log</LastUsedView>
+  <LogBranchFilterIndex>0</LogBranchFilterIndex>
+  <OutgoingSavedCount>0</OutgoingSavedCount>
+  <SidebarExpandedItems>
+    <string>파일 상태</string>
+    <string>파일 상태/작업 공간</string>
+    <string>브랜치</string>
+  </SidebarExpandedItems>
+  <SidebarWidth>140</SidebarWidth>
+  <SubtreeLinks />
+</RepositoryCustomSettings>

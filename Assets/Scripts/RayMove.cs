@@ -7,7 +7,9 @@ public class RayMove : MonoBehaviour {
     {
         Vector3 scrSpace = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-            Input.mousePosition.y, scrSpace.z));
+            Input.mousePosition.y, scrSpace.z)
+            );
+
 
         while(Input.GetMouseButton(0))
         {
