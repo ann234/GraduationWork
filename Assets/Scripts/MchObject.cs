@@ -59,6 +59,28 @@ public class MchObject : MonoBehaviour {
         }
     }
 
+    public void Simulation(bool isSimulate)
+    {
+        if (isSimulate) //Simulation Start
+        {
+            rb.useGravity = true;
+            setColTrigger(false);
+        }
+        else
+        {
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            setColTrigger(true);
+        }
+    }
+
+    public virtual void doSound(float volume)
+    {
+
+    }
+
     // Use this for initialization
     public virtual void Start()
     {
@@ -80,28 +102,6 @@ public class MchObject : MonoBehaviour {
     // Update is called once per frame
     public virtual void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if(Global_Variable.collideObj <= 0)
-            {
-                if (rb.useGravity == true)
-                {
-                    rb.useGravity = false;
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-
-                    setColTrigger(true);
-                    
-                }
-                else //Simulation Start
-                {
-                    Global_Variable.isSimulate = true;
-                    rb.useGravity = true;
-                    setColTrigger(false);
-                }
-            }
-        }
-
         if(!Global_Variable.isSimulate)
         {
             //  update deny image's position
@@ -177,8 +177,19 @@ public class MchObject : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (isMoved && !isCollided)
+        if (isMoved && !isCollided && (transform.position.y > 0))
+            //  현재 오브젝트가 플레이 가능한 오브젝트이고
+            //  다른 오브젝트와 충돌하지 않았으며
+            //  y축으로 0보다 위에 있으면(UI부분으로 갔을 경우에 놓아지지 않도록 하기 위해)
         {
+            if(isPicked)    //선택되어있던 오브젝트를 떼는 경우
+            {
+                Global_Variable.curCtrlMode = ControlMode.CONTROL_MODE_CAMERA;  //카메라모드로 전환
+            }
+            else //오브젝트를 선택한 경우
+            {
+                Global_Variable.curCtrlMode = ControlMode.CONTROL_MODE_PLAY;  //플레이 모드로 전환
+            }
             isPicked = !isPicked;
 
             scrSpace = Camera.main.WorldToScreenPoint(transform.position);

@@ -2,6 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ControlMode
+{
+    CONTROL_MODE_CAMERA,
+    CONTROL_MODE_PLAY
+}
+
 public enum TransformMode
 {
     MODE_TRANSLATION,
@@ -11,6 +17,7 @@ public enum TransformMode
 public class Global_Variable : MonoBehaviour {
     
     public static TransformMode curMode = TransformMode.MODE_TRANSLATION;
+    public static ControlMode curCtrlMode = ControlMode.CONTROL_MODE_CAMERA;
     public static int collideObj = 0;
     public static bool isSimulate = false;
 

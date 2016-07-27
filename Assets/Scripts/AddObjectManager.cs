@@ -26,14 +26,17 @@ public class AddObjectManager : MonoBehaviour {
         parentTrans = GameObject.Find("Objects").transform;
 
         Quaternion initRot = Quaternion.Euler(0, 90, 0);
+        int count = 0;
         foreach (var item in objs)
         {
             for(int i = 0; i < item.numOfObj; i++)
             {
-                GameObject newObj = (GameObject)Instantiate(item.prefab, new Vector3(-7.5f, 7, 0), initRot);
+                GameObject newObj = (GameObject)Instantiate(item.prefab, new Vector3(-7.5f + (count * 3), 1, 0), initRot);
                 //newObj.transform.SetParent(parentTrans);
                 newObj.GetComponent<MchObject>().isMoved = true;
+                //newObj.SetActive(false);
             }
+            count += 1;
         }
 	}
 	

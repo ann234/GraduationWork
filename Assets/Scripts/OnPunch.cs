@@ -1,22 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OnPunch : MonoBehaviour {
+public class OnPunch : MchObject {
 
-    private Rigidbody rb;
     private Collider col;
     private SpringJoint sp;
 
     // Use this for initialization
-    void Start()
+    public override void Start()
     {
         col = GetComponent<Collider>();
         rb = col.attachedRigidbody;
         sp = GetComponent<SpringJoint>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    public override void Update () {
 	
 	}
 

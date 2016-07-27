@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour {
 
     public float speedX = -20.0f;
     public float speedY = -20.0f;
-    public float speedZ = 20.0f;
+    public float speedZ = 100.0f;
 
     public Vector3 minXYZ = new Vector3(-5, 1, -13);
     public Vector3 maxXYZ = new Vector3(5, 10, -3);
@@ -17,7 +17,10 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        StartCoroutine("moveCamera");
+        if(Global_Variable.curCtrlMode == ControlMode.CONTROL_MODE_CAMERA)
+        {
+            StartCoroutine("moveCamera");
+        }
     }
 
     IEnumerator moveCamera()

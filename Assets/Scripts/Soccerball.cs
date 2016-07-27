@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Soccerball : MchObject {
 
-    public AudioSource bounceSnd;
+    private AudioSource bounceSnd;
     public float initVolume;
 
     // Use this for initialization
@@ -18,14 +18,19 @@ public class Soccerball : MchObject {
         base.Update();
     }
 
+    public override void doSound(float volume)
+    {
+        bounceSnd.volume = volume;
+        bounceSnd.Play();
+    }
+
     public void OnCollisionEnter(Collision cols)
     {
         float force = rb.velocity.magnitude;
         if (force > 0.5)
         {
             float volume = force * 0.1f;
-            bounceSnd.volume = volume;
-            bounceSnd.Play();
+            doSound(volume);
         }
     }
 }
